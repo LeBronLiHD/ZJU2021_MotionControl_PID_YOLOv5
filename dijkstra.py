@@ -42,7 +42,7 @@ class GraphDijkstra:
         count = 0
         while count < self.edge:
             start, end, weight = map(int, input("For the " + str(count + 1) + " edge: ").split())
-            while self.checkEdgeValue(start, end, weight) == False:
+            while self.checkEdgeValue(start, end, weight) is False:
                 print("InValid Input, Please Input Again")
                 start, end, weight = map(int, input("For the " + str(count + 1) + " edge: ").split())
             self.arc[start - 1][end - 1] = weight
@@ -80,19 +80,22 @@ class GraphDijkstra:
             minLength = sys.maxsize
             minIndex = 0
             for i in range(self.vexnum):
-                if self.dis[i].visit == False and self.dis[i].value < minLength:
+                if self.dis[i].visit is False and self.dis[i].value < minLength:
                     minLength = self.dis[i].value
                     minIndex = i
             self.dis[minIndex].visit = True
             countVisited += 1
             # 4. In Triangle, the Sun of Any Two Edges is Bigger than the Third One
             for i in range(self.vexnum):
-                if self.dis[i].visit == False and \
+                if self.dis[i].visit is False and \
                         self.arc[minIndex][i] != sys.maxsize and \
                         self.dis[i].value > self.arc[minIndex][i] + minLength:
                     self.dis[i].value = minLength + self.arc[minIndex][i]
                     self.dis[i].path = self.dis[minIndex].path + " --> v" + str(i + 1)
-                    self.dis[i].path_list = self.dis[minIndex].path_list
+                    # self.dis[i].path_list = self.dis[minIndex].path_list
+                    self.dis[i].path_list = []
+                    for node in self.dis[minIndex].path_list:
+                        self.dis[i].path_list.append(node)
                     self.dis[i].path_list.append(i + 1)
 
     def printPath(self, begin):
@@ -104,4 +107,4 @@ class GraphDijkstra:
                 print(self.dis[i].path, "=", self.dis[i].value)
 
     def searchPath(self, dest):
-        return self.dis[dest]
+        return self.dis[dest - 1]
