@@ -5,4 +5,4 @@
 &copy; Zhengnan SUN, Guanxun LANG, and Haodong LI
 
 - Use PID for the balance of two-wheel car
-- Apply YOLOv3 Net for road-objects detection
+- Apply YOLOv5 Net for road-objects detection
