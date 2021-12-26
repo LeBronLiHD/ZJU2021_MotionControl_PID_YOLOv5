@@ -11,7 +11,7 @@ __pycache__/
 cur_img/
 .dist/
 runs/
-#data/
+# data/
 custom_yolov5/run/
 custom_yolov5/train/20211226-074109/
 
