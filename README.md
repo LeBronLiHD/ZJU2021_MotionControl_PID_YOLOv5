@@ -5,4 +5,5 @@
 &copy; Zhengnan SUN, Guanxun LANG, and Haodong LI
 
 - Use PID for the balance of two-wheel car
+- Dijkstra for Yuquan campus navigation
 - Apply YOLOv5 Net for road-objects detection
