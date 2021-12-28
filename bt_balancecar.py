@@ -14,8 +14,8 @@ import time
 import math
 import numpy
 
-server_address = "28:54:71:26:12:96"
-server_port = 4 # default
+server_address = "98:DA:20:02:F7:57"
+server_port = 4  # default
 
 try:
     socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
@@ -23,8 +23,13 @@ try:
     socket.connect((server_address, server_port))
 except OSError as e:
     print(f"{server_address} is offline", e)
+    exit()
 
-mode_dict = {'w':'0x01', 'a':'0x04', 's':'0x02', 'd':'0x03', 'q':'0x07'}
+mode_dict = {'w':'$1,0,0,0,0,0,0,0,0,0#',
+             'a':'$3,0,0,0,0,0,0,0,0,0#',
+             's':'$2,0,0,0,0,0,0,0,0,0#',
+             'd':'$4,0,0,0,0,0,0,0,0,0#',
+             'q':'$0,0,0,0,0,0,0,0,0,0#'}
 
 
 def control(mode=None):

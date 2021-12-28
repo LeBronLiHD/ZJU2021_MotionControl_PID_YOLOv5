@@ -7,15 +7,21 @@ using PyBluez (with Python 3).
 
 import bluetooth
 
-serverMACAddress = '28:54:71:26:12:96'
-port = 3
-socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-print("bluetooth connecting ...")
-socket.connect((serverMACAddress, port))
+serverMACAddress = "98:DA:20:02:F7:57"
+port = 1
+try:
+    socket = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
+    # HCI, L2CAP, RFCOMM, or SCO. The default is RFCOMM.
+    socket.connect((serverMACAddress, port))
+except OSError as e:
+    print(f"{serverMACAddress} is offline", e)
+    exit()
 
 while 1:
-    text = input() # Note change to the old (Python 2) raw_input
-    if text == "quit":
+    text = input()  # Note change to the old (Python 2) raw_input
+    if text == '$0,0,0,0,0,0,0,0,0,0#':
+        print("sent <" + text + "> to device:" + serverMACAddress)
+        socket.send(text)
     	break
     print("sent <" + text + "> to device:" + serverMACAddress)
     socket.send(text)
