@@ -2,7 +2,7 @@
 
 > ZJU2021_MotionControl_PID_YOLOv5
 
-&copy; Zhengnan SUN, Guanxun LANG, and Haodong LI
+&copy; Haodong LI, Zhengnan SUN, Guanxun LANG
 
 - Use PID for the balance of two-wheel car
 - Dijkstra for Yuquan campus navigation
